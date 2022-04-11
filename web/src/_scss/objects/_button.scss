@@ -1,0 +1,14 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  background: transparent;
+  border-radius: 2.5em;
+  border: 1px solid currentcolor;
+  line-height: 1;
+  padding: .625em 1.25em;
+}

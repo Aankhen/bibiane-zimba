@@ -1,0 +1,25 @@
+.page-section {
+  :where(h1, h2) {
+    font-family: var(--font-secondary);
+    font-weight: 250;
+    font-size: var(--step-5);
+    line-height: 1.15;
+    color: #fff;
+
+    em {
+      font-family: var(--font-accent);
+    }
+
+    & + * {
+      margin-block-start: 2em;
+    }
+  }
+
+  :where(p) {
+    font-size: var(--step-0);
+
+    & + p {
+      margin-block-start: 1em;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+<ul class="main-menu">
+  {% for mainLink in collections.navMain %}
+    <li class="main-menu__item"><a @click="open = false" href="#{{ mainLink.data.title | slug }}">{{ mainLink.data.title }}</a></li>
+  {% endfor %}
+</ul>
+<ul class="sub-menu">
+  {% for subLink in collections.navSub %}
+    <li class="sub-menu__item"><a @click="open = false" href="#{{ subLink.data.title | slug }}">{{ subLink.data.title }}</a></li>
+  {% endfor %}
+</ul>
+<ul class="socials-menu">
+  {% for socialLink in socials %}
+    <li class="socials-menu__item"><a @click="open = false" href="#{{ socialLink.name | slug }}">{{ socialLink.name }}</a></li>
+  {% endfor %}
+</ul>

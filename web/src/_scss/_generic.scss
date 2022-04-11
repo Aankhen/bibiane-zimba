@@ -1,0 +1,26 @@
+@use 'vendor/reset';
+
+:root {
+  // type scale https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+  --step--2: clamp(.80rem, calc(.65rem + .21vw), .69rem);
+  --step--1: clamp(1rem, calc(.77rem + .33vw), .83rem);
+  --step-0: clamp(1rem, calc(.90rem + .49vw), 1.25rem);
+  --step-1: clamp(1.20rem, calc(1.06rem + .71vw), 1.56rem);
+  --step-2: clamp(1.44rem, calc(1.24rem + 1.00vw), 1.95rem);
+  --step-3: clamp(1.73rem, calc(1.45rem + 1.39vw), 2.44rem);
+  --step-4: clamp(2.07rem, calc(1.69rem + 1.91vw), 3.05rem);
+  --step-5: clamp(2.49rem, calc(1.97rem + 2.59vw), 3.82rem);
+  // spacing
+  --site-padding: clamp(1rem, calc(-.56rem + 7.80vw), 5rem);
+  // fonts
+  --font-primary: "Fira Code", monospace;
+  --font-secondary: "Noto Serif Display", serif;
+  --font-accent: "IM Fell French Canon", serif;
+  // shadows
+  --shadow-fat: box-shadow: 0px 24px 54px 0px rgba(0, 0, 0, 0.25);
+  background-color: hsl(0 0% 11%);
+}
+
+* {
+  box-sizing: border-box;
+}

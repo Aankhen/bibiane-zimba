@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx eleventy",
-    "dev": "npx eleventy --watch --serve",
+    "eleventy:serve": "eleventy --serve",
+    "eleventy:build": "eleventy",
+    "eleventy:test": "eleventy --dryrun",
+    "sass:watch": "sass src/_scss:_site/css --watch --update --color",
+    "sass:build": "sass src/_scss:_site/css --no-source-map --style=compressed",
+    "clean": "del _site",
+    "build": "run-s -l clean eleventy:build sass:build",
+    "dev": "run-p -l clean sass:build sass:watch eleventy:serve",
     "now-build": "npm run build",
     "debug": "DEBUG=* npx eleventy"
   },
@@ -18,10 +24,16 @@
     "@sanity/block-content-to-markdown": "0.0.5",
     "@sanity/client": "^2.0.0",
     "clean-css": "^4.2.1",
+    "del-cli": "^4.0.1",
     "dotenv": "^8.2.0",
     "groq": "^0.142.0",
     "luxon": "^1.19.3",
     "markdown-it": "^10.0.0",
-    "markdown-it-anchor": "^5.2.5"
+    "markdown-it-anchor": "^5.2.5",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.50.0"
+  },
+  "dependencies": {
+    "node-vibrant": "^3.2.1-alpha.1"
   }
 }

@@ -1,0 +1,21 @@
+@use 'settings';
+
+@function breakpoint($_breakpointName) {
+    @if (map-has-key($map: settings.$breakpoints, $key: $_breakpointName)) {
+        @return map-get($map: settings.$breakpoints, $key: $_breakpointName);
+    } @else {
+        @error "[fn] breakpoint: The breakpoint '#{$_breakpointName}' does not exist in $breakpoints!";
+    }
+}
+
+@mixin widerThan($_breakpointName) {
+  @media (min-width: breakpoint($_breakpointName)) { @content; }
+}
+
+@mixin narrowerThan($_breakpointName) {
+  @media (max-width: (breakpoint($_breakpointName) - 1px)) { @content; }
+}
+
+@mixin inbetweenBreakpoints($_narrowestBreakpoint, $_widestBreakpoint) {
+  @media (min-width: breakpoint($_narrowestBreakpoint)) and (max-width: breakpoint($_widestBreakpoint)) { @content; }
+}

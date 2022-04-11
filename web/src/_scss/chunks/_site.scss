@@ -1,0 +1,76 @@
+.site {
+  --default-primary: 290;
+  --default-secondary: calc(var(--default-primary) + 70);
+  --default-accent: calc(var(--default-primary) - 110);
+  --color-dark: hsl(var(--extracted-primary, var(--default-primary)) 33% 11%);
+  --color-bright: hsl(var(--extracted-secondary, var(--default-secondary)) 14% 75%);
+  --color-accent: hsl(var(--extracted-accent, var(--default-accent)) 14% 75%);
+  display: grid;
+  grid-template-columns: 1fr 1.6180339fr;
+
+  &__header {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 0;
+    padding: var(--site-padding);
+    z-index: 2; // 2 necessary, otherwise the content-text would live above the blur
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    background-color: var(--color-dark);
+    color: var(--color-accent);
+
+    :any-link {
+      color: var(--color-accent);
+    }
+
+    &-wave {
+      /*position: sticky;
+      top: 0;
+      z-index: 0;*/
+      
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &-hero {
+      padding: var(--site-padding);
+      margin-block-start: -40vw;
+
+      img {
+        display: block;
+        width: 100%;
+        border-radius: 2px;
+        box-shadow: var(--shadow-fat);
+      }
+    }
+
+    &-text {
+      padding: var(--site-padding);
+      padding-block-start: calc(var(--site-padding) * 2);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: var(--site-padding);
+      gap: var(--site-padding);
+    }
+
+    &-page-section {
+      min-width: 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      content-visibility: auto;
+    }
+  }
+
+  &__footer {
+    grid-column: 1 / -1;
+    padding: var(--site-padding);
+  }
+}

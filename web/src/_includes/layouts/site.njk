@@ -1,0 +1,95 @@
+---
+layout: layouts/base.njk
+---
+<script src="//unpkg.com/alpinejs" defer></script>
+<header class="header  site__header" x-data="{ open: false }">
+  <button class="button  header__menu-button" aria-expanded="false" @click="open = true">menu</button>
+  <nav class="header__menu" hidden id="menu" x-show="open" x-transition x-cloak>
+    <button class="button  header__menu-close-button" aria-expanded="true" aria-controls="menu" @click="open = false">close</button>
+    {%- include 'menu.njk' -%}
+  </nav>
+</header>
+<main class="site__content">
+  <div class="site__content-wave">
+    <svg viewBox="0 0 671 1080" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+        <radialGradient id="wave-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(335.056 540) rotate(90) scale(540 335.056)">
+          <stop stop-color="#6D9191"/>
+          <stop offset="1" stop-color="#714040"/>
+        </radialGradient>
+      </defs>
+      <path d="M 0,0
+               H 555
+               C 555,206.612 296,155.5 555,527
+               C 814,898.5 555,864.845 555,1080
+               H 0
+               V 0
+               Z" fill="url(#paint0_radial_503_237)"/>
+    </svg>
+    
+    <svg width="320" height="200" viewBox="0 0 321 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="wave-gradient-small" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160.32 100.22) rotate(-180) scale(160 99.2757)">
+          <stop stop-color="currentcolor" style="color: hsl(var(--extracted-accent, var(--default-accent)) 14% 50%)"/>
+          <stop offset="1" stop-color="currentcolor" style="color: hsl(var(--extracted-secondary, var(--default-secondary)) 28% 35%)"/>
+        </radialGradient>
+      </defs>
+        <path d="
+        M 320,0
+        V 165.389
+        C 259.102,165.389 274.246,88.6483 164.172,165.389
+        C 54.0981,242.13 64.0698,165.389 0,165.389
+        L 0,0
+        L 320,0" fill="url(#wave-gradient-small)"/>
+        <path d="
+        M 320,0
+        V 165.389
+        C 259.102,165.389 274.246,88.6483 164.172,165.389
+        C 54.0981,242.13 64.0698,165.389 0,165.389
+        L 0,0
+        L 320,0" fill="url(#wave-gradient-small)" transform="translate(0,-32)"/>
+        <path d="
+        M 320,0
+        V 165.389
+        C 259.102,165.389 274.246,88.6483 164.172,165.389
+        C 54.0981,242.13 64.0698,165.389 0,165.389
+        L 0,0
+        L 320,0" fill="url(#wave-gradient-small)" transform="translate(0,-64)"/>
+        <path d="
+        M 320,0
+        V 165.389
+        C 259.102,165.389 274.246,88.6483 164.172,165.389
+        C 54.0981,242.13 64.0698,165.389 0,165.389
+        L 0,0
+        L 320,0" fill="url(#wave-gradient-small)" transform="translate(0,-96)"/>
+        <path d="
+        M 320,0
+        V 165.389
+        C 259.102,165.389 274.246,88.6483 164.172,165.389
+        C 54.0981,242.13 64.0698,165.389 0,165.389
+        L 0,0
+        L 320,0" fill="url(#wave-gradient-small)" transform="translate(0,-128)"/>
+        <path d="
+        M 320,0
+        V 165.389
+        C 259.102,165.389 274.246,88.6483 164.172,165.389
+        C 54.0981,242.13 64.0698,165.389 0,165.389
+        L 0,0
+        L 320,0" fill="url(#wave-gradient-small)" transform="translate(0,-160)"/>
+    </svg>
+
+  </div>
+  <div class="site__content-hero">
+    {% for pageSection in collections.page %}
+      {% if pageSection.data.eleventyComputed.hero %}<img src="{{ 'assets/heros/' + pageSection.data.eleventyComputed.hero.src | url }}" alt="{{ pageSection.data.eleventyComputed.hero.alt }}">{% endif %}
+    {% endfor %}
+  </div>
+  <div class="site__content-text">
+    {% for pageSection in collections.page %}
+      <section class="page-section  site__content-page-section" id="{{ pageSection.data.title | slug }}">{{pageSection.data.eleventyComputed.hero.palette}}{{ pageSection.templateContent | safe }}</section>
+    {% endfor %}
+  </div>
+  <footer class="site__footer">
+    <small>&copy; 2022 Bibiane Zimba</small>
+  </footer>
+</main>
